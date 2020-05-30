@@ -1,7 +1,8 @@
-﻿<!-- Content Header (Page header) -->
+﻿@*@model AdminLteExample.Models.Customer*@
+<!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Customers
+        Müşteriler
     </h1>
 </section>
 <!-- Main content -->
@@ -9,47 +10,61 @@
     <!-- Horizontal Form -->
     <div class="box box-info">
         <div class="box-header with-border">
-            <h3 class="box-title">Add Customer</h3>
+            <h3 class="box-title">Müşteri Ekle</h3>
         </div>
         <!-- /.box-header -->
         <!-- form start -->
         <form class="form-horizontal" method="post" action="CreateCustomer">
             <div class="box-body">
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Car Plate</label>
+                    <label for="inputEmail3" class="col-sm-2 control-label">Araç Plakası</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="CarPlate" placeholder="Car Plate">
+                        <input type="text" class="form-control" name="CarPlate" placeholder="Araç Plakası">
+                        @*@Html.TextBoxFor(m => m.CarPlate, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.CarPlate, "", new { @style = "color-red" })*@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+                    <label for="inputEmail3" class="col-sm-2 control-label">Marka</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="Name" placeholder="Name">
+                        <input type="text" class="form-control" name="Brand" placeholder="Marka">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Phone</label>
+                    <label for="inputEmail3" class="col-sm-2 control-label">Model</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" name="Phone" placeholder="Phone">
+                        <input type="text" class="form-control" name="Model" placeholder="Model">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Vehicle Type</label>
+                    <label for="inputEmail3" class="col-sm-2 control-label">Ad Soyad</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="VehicleType" placeholder="Vehicle Type">
+                        <input type="text" class="form-control" name="Name" placeholder="Ad Soyad">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                    <label for="inputEmail3" class="col-sm-2 control-label">Telefon</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" name="Email" placeholder="Email">
+                        <input type="text" class="form-control" name="Phone" placeholder="Telefon">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Araç Tipi</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="VehicleType" placeholder="Araç Tipi">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">E-posta</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" name="Email" placeholder="E-posta">
                     </div>
                 </div>
             </div>
             <!-- /.box-body -->
             <div class="box-footer">
-                <button type="submit" class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-info pull-right">Create</button>
+                <a href="/Customers/Index"><button type="button" class="btn btn-default">İptal</button></a>
+                <button type="submit" class="btn btn-info pull-right">Oluştur</button>
             </div>
             <!-- /.box-footer -->
         </form>

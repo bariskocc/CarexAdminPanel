@@ -5,15 +5,27 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AdminLteExample.Models;
+using AdminLteExample.ViewModels;
 
 namespace AdminLteExample.Controllers
 {
     public class HomeController : Controller
     {
+        private CarexDBContext db = new CarexDBContext();
         public IActionResult Index()
         {
-            return View();
+            DashboardViewModel dashboard = new DashboardViewModel();
+
+            dashboard.customers_count = db.Customer.Count();
+            //dashboard.nurses_count = db.Nurses.Count();
+            //dashboard.patients_count = db.Patients.Count();
+            return View(dashboard);
         }
+
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
 
         public IActionResult Privacy()
         {

@@ -1,7 +1,7 @@
 ﻿@model AdminLteExample.Models.Customer
 <section class="content-header">
     <h1>
-        Customers
+        Müşteriler
     </h1>
 </section>
 <!-- Main content -->
@@ -9,38 +9,50 @@
     <!-- Horizontal Form -->
     <div class="box box-info">
         <div class="box-header with-border">
-            <h3 class="box-title">Update Customer</h3>
+            <h3 class="box-title">Müşteri Güncelle</h3>
         </div>
         <!-- /.box-header -->
         <!-- form start -->
         <form class="form-horizontal" method="post" action="/Customers/UpdateCustomer">
             <div class="box-body">
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Car Plate</label>
+                    <label for="inputEmail3" class="col-sm-2 control-label">Araç Plakası</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="CarPlate" placeholder="Car Plate" value="@Model.CarPlate">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+                    <label for="inputEmail3" class="col-sm-2 control-label">Marka</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="Brand" placeholder="Marka" value="@Model.Brand">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Model</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="Model" placeholder="Model" value="@Model.Model">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Ad Soyad</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="Name" placeholder="Name" value="@Model.Name">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Phone</label>
+                    <label for="inputEmail3" class="col-sm-2 control-label">Telefon</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="Phone" placeholder="Phone" value="@Model.Phone">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Vehicle Type</label>
+                    <label for="inputEmail3" class="col-sm-2 control-label">Araç Tipi</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="VehicleType" placeholder="Vehicle Type" value="@Model.VehicleType">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                    <label for="inputEmail3" class="col-sm-2 control-label">E-posta</label>
                     <div class="col-sm-10">
                         <input type="Email" class="form-control" name="Email" value="@Model.Email">
                     </div>
@@ -49,8 +61,8 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer">
-                <button type="submit" class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-info pull-right">Update</button>
+                <a href="/Customers/Index"><button type="button" class="btn btn-default">İptal</button></a>
+                <button type="submit" class="btn btn-info pull-right">Güncelle</button>
             </div>
             <!-- /.box-footer -->
         </form>

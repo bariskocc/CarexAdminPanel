@@ -7,10 +7,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@ViewData["Title"] | AdminLTE 2</title>
+    <title>@ViewData["Title"] CAREX ADMIN PANEL</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Morris chart -->
+    <link rel="stylesheet" href="bower_components/morris.js/morris.css">
     <!-- DataTables -->
     <link rel="stylesheet" href="~/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <!-- Font Awesome -->
@@ -59,7 +61,7 @@ desired effect
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
+             @*Content Header (Page header) 
             <section class="content-header">
                 <h1>
                     Page Header
@@ -70,20 +72,20 @@ desired effect
                     <li class="active">Here</li>
                 </ol>
             </section>
-            <!-- Main content -->
+             Main content*@ 
             <section class="content container-fluid">
                 @RenderBody()
             </section>
-            <!-- /.content -->
+             @*/.content*@ 
         </div>
         <!-- /.content-wrapper -->
 
         <partial name="_LayoutMainFooter" />
 
         <partial name="_LayoutControlSidebar" />
-        
+
         <!-- Add the sidebar's background. This div must be placed
-    immediately after the control sidebar -->
+        immediately after the control sidebar -->
         <div class="control-sidebar-bg"></div>
     </div>
     <!-- ./wrapper -->

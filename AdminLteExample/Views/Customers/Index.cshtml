@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<AdminLteExample.Models.Customer>
 <section class="content-header">
     <h1>
-        Customers
+        Müşteriler
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Customers</li>
+        <li><a href="/Home/Index"><i class="fa fa-dashboard"></i> Ana Sayfa</a></li>
+        <li class="active">Müşteriler</li>
     </ol>
 </section>
 <!-- Main content -->
@@ -14,34 +14,40 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Manage Customers</h3>
+                    <h3 class="box-title">Müşterileri Yönet</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>Car Plate</th>
-                                <th>Name</th>
-                                <th>Phone</th>
-                                <th>Vehicle Type</th>
-                                <th>Email</th>
-                                <th>Action</th>
+                                @*<th>Id</th>*@
+                                <th>Araç Plakası</th>
+                                <th>Marka</th>
+                                <th>Model</th>
+                                <th>Ad Soyad</th>
+                                <th>Telefon</th>
+                                <th>Araç Tipi</th>
+                                <th>E-posta</th>
+                                <th>Aksiyon</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
                             <tr>
-                                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                                @*<td>@Html.DisplayFor(modelItem => item.Id)</td>*@
                                 <td>@Html.DisplayFor(modelItem => item.CarPlate)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Brand)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Model)</td>
                                 <td>@Html.DisplayFor(modelItem => item.Name)</td>
                                 <td>@Html.DisplayFor(modelItem => item.Phone)</td>
                                 <td>@Html.DisplayFor(modelItem => item.VehicleType)</td>
                                 <td>@Html.DisplayFor(modelItem => item.Email)</td>
-                                <td><a href="Customers/AddDetail/@item.Id">Add Detail</a> | <a href="Customers/Details/@item.Id">Details</a> | 
-                                    <a href="Customers/Update/@item.Id">Update</a> | <a href="" onclick="Delete('@item.Id')">Delete</a></td>
+                                <td>
+                                    <a href="/Customers/AddDetail/@item.Id">Detay Ekle</a> | <a href="/Customers/Details/@item.Id">Detaylar</a> |
+                                    <a href="/Customers/Update/@item.Id">Güncelle</a> | <a href="" onclick="Delete('@item.Id')">Sil</a>
+                                </td>
                             </tr>
                             }
                     </table>
@@ -65,7 +71,7 @@
     });
     function Delete(id){
         var txt;
-        var r = confirm("Are you sure you want to Delete?");
+        var r = confirm("Silmek istediğine emin misin?");
         if (r == true) {
 
             $.ajax(
@@ -84,7 +90,7 @@
                         window.location.reload();
                     }
                     else {
-                        alert("There is a problem, Try Later!");
+                        alert("Bir sorun oluştu, tekrar deneyin!");
                     }
                 }
             });

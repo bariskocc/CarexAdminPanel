@@ -64,6 +64,14 @@ namespace AdminLteExample.Models
                     .HasColumnName("car_plate")
                     .HasMaxLength(50);
 
+                entity.Property(e => e.Brand)
+                    .HasColumnName("brand")
+                    .HasMaxLength(150);
+
+                entity.Property(e => e.Model)
+                    .HasColumnName("model")
+                    .HasMaxLength(150);
+
                 entity.Property(e => e.Name)
                     .HasColumnName("name")
                     .HasMaxLength(150);

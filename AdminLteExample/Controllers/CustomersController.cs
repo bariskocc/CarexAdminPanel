@@ -42,6 +42,10 @@ namespace AdminLteExample.Controllers
         }
         public ActionResult Create()
         {
+            //    if (!ModelState.IsValid)
+            //    {
+            //        return View("Create");
+            //    }
             return View();
         }
         [HttpPost]
@@ -65,7 +69,6 @@ namespace AdminLteExample.Controllers
             {
                 return false;
             }
-
         }
         public ActionResult Update(int id)
         {
@@ -80,8 +83,39 @@ namespace AdminLteExample.Controllers
             d.Phone = customer.Phone;
             d.VehicleType = customer.VehicleType;
             d.Email = customer.Email;
+            d.Brand = customer.Brand;
+            d.Model = customer.Model;
             db.SaveChanges();
             return RedirectToAction("Index", "Customers");
+        }
+        public ActionResult UpdateDetail(int id)
+        {
+            return View(db.CustomerDetails.Where(s => s.Id == id).First());
+        }
+        [HttpPost]
+        public ActionResult UpdateCustomerDetail(CustomerDetails details)
+        {
+            CustomerDetails d = db.CustomerDetails.Where(s => s.Id == details.Id).First();
+            d.Operation = details.Operation;
+            d.OperationDate = details.OperationDate;
+            d.OperationCost = details.OperationCost;
+            db.SaveChanges();
+            return RedirectToAction("Index", "Customers");
+        }
+        [HttpPost]
+        public bool DeleteDetail(int id)
+        {
+            try
+            {
+                CustomerDetails details = db.CustomerDetails.Where(s => s.Id == id).First();
+                db.CustomerDetails.Remove(details);
+                db.SaveChanges();
+                return true;
+            }
+            catch (System.Exception)
+            {
+                return false;
+            }
         }
     }
 }

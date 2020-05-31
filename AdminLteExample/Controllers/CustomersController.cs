@@ -15,6 +15,7 @@ namespace AdminLteExample.Controllers
     public class CustomersController : Controller
     {
         CarexDBContext db = new CarexDBContext();
+        
 
         public ActionResult Index()
         {
@@ -44,6 +45,9 @@ namespace AdminLteExample.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            //List<CarBrands> brandList = db.CarBrands.ToList();
+            //ViewBag.brandList = new SelectList(brandList, "BrandId", "BrandName");
+
             List<SelectListItem> markalar = (from i in db.CarBrands.ToList()
                                              select new SelectListItem
                                              {
@@ -52,13 +56,13 @@ namespace AdminLteExample.Controllers
                                              }).ToList();
             ViewBag.markalar = markalar;
 
-            //List<SelectListItem> modeller = (from i in db.CarModels.ToList()
-            //    select new SelectListItem
-            //    {
-            //        Text = i.ModelName,
-            //        Value = i.ModelId.ToString()
-            //    }).ToList();
-            //ViewBag.modeller = modeller;
+            List<SelectListItem> modeller = (from i in db.CarModels.ToList()
+                                             select new SelectListItem
+                                             {
+                                                 Text = i.ModelName,
+                                                 Value = i.ModelId.ToString()
+                                             }).ToList();
+            ViewBag.modeller = modeller;
 
             //    if (!ModelState.IsValid)
             //    {

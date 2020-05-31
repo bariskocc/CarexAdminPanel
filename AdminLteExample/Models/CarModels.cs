@@ -21,7 +21,7 @@ namespace AdminLteExample.Models
 
         public int BrandId { get; set; }
 
-        public CarBrands CarBrands { get; set; }
+        //public CarBrands CarBrands { get; set; }
 
     }
 }

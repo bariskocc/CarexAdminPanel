@@ -45,8 +45,8 @@
                                 <td>@Html.DisplayFor(modelItem => item.VehicleType)</td>
                                 <td>@Html.DisplayFor(modelItem => item.Email)</td>
                                 <td>
-                                    <a href="/Customers/AddDetail/@item.Id">Detay Ekle</a> | <a href="/Customers/Details/@item.Id">Detaylar</a> |
-                                    <a href="/Customers/Update/@item.Id">Güncelle</a> | <a href="" onclick="Delete('@item.Id')">Sil</a>
+                                    <a href="/Customers/AddDetail/@item.CustomerId">Detay Ekle</a> | <a href="/Customers/Details/@item.CustomerId">Detaylar</a> |
+                                    <a href="/Customers/Update/@item.CustomerId">Güncelle</a> | <a href="" onclick="Delete('@item.CustomerId')">Sil</a>
                                 </td>
                             </tr>
                             }

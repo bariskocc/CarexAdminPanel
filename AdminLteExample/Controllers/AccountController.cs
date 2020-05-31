@@ -18,22 +18,22 @@ namespace AdminLteExample.Controllers
 
         public ActionResult Validate(Admin admin)
         {
-            var _admin = db.Admin.Where(s => s.Email == admin.Email);
+            var _admin = db.Admin.Where(s => s.Name == admin.Name);
             if (_admin.Any())
             {
                 if (_admin.Where(s => s.Password == admin.Password).Any())
                 {
 
-                    return Json(new { status = true, message = "Login Successfull!" });
+                    return Json(new { status = true, message = "Giriş Başarılı!" });
                 }
                 else
                 {
-                    return Json(new { status = false, message = "Invalid Password!" });
+                    return Json(new { status = false, message = "Geçersiz Şifre!" });
                 }
             }
             else
             {
-                return Json(new { status = false, message = "Invalid Email!" });
+                return Json(new { status = false, message = "Geçersiz Kullanıcı Adı!" });
             }
         }
     }

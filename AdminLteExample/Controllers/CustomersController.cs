@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AdminLteExample.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -21,12 +22,12 @@ namespace AdminLteExample.Controllers
         }
         public ActionResult Details(int id)
         {
-            var data = db.CustomerDetails.FromSql("select * from customer_details where customer_id = {0}", id).ToList();
+            var data = db.CustomerDetails.FromSql("select * from CustomerDetails where CustomerId = {0}", id).ToList();
             return View(data);
         }
         public ActionResult AddDetail(int id)
         {
-            return View(db.Customer.Where(s => s.Id == id).First());
+            return View(db.Customer.Where(s => s.CustomerId == id).First());
         }
         [HttpPost]
         public ActionResult AddDetail(CustomerDetails details)
@@ -40,8 +41,25 @@ namespace AdminLteExample.Controllers
 
             return RedirectToAction("Index", "Customers");
         }
+        [HttpGet]
         public ActionResult Create()
         {
+            List<SelectListItem> markalar = (from i in db.CarBrands.ToList()
+                                             select new SelectListItem
+                                             {
+                                                 Text = i.BrandName,
+                                                 Value = i.BrandId.ToString()
+                                             }).ToList();
+            ViewBag.markalar = markalar;
+
+            //List<SelectListItem> modeller = (from i in db.CarModels.ToList()
+            //    select new SelectListItem
+            //    {
+            //        Text = i.ModelName,
+            //        Value = i.ModelId.ToString()
+            //    }).ToList();
+            //ViewBag.modeller = modeller;
+
             //    if (!ModelState.IsValid)
             //    {
             //        return View("Create");
@@ -60,7 +78,7 @@ namespace AdminLteExample.Controllers
         {
             try
             {
-                Customer customer = db.Customer.Where(s => s.Id == id).First();
+                Customer customer = db.Customer.Where(s => s.CustomerId == id).First();
                 db.Customer.Remove(customer);
                 db.SaveChanges();
                 return true;
@@ -72,12 +90,12 @@ namespace AdminLteExample.Controllers
         }
         public ActionResult Update(int id)
         {
-            return View(db.Customer.Where(s => s.Id == id).First());
+            return View(db.Customer.Where(s => s.CustomerId == id).First());
         }
         [HttpPost]
         public ActionResult UpdateCustomer(Customer customer)
         {
-            Customer d = db.Customer.Where(s => s.Id == customer.Id).First();
+            Customer d = db.Customer.Where(s => s.CustomerId == customer.CustomerId).First();
             d.CarPlate = customer.CarPlate;
             d.Name = customer.Name;
             d.Phone = customer.Phone;
